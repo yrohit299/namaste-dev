@@ -1,0 +1,19 @@
+{
+  "name": "namaste-dev",
+  "version": "1.0.0",
+  "description": "this is namaste react app",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yrohit299/namaste-dev.git"
+  },
+  "author": "Rohit Yadav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yrohit299/namaste-dev/issues"
+  },
+  "homepage": "https://github.com/yrohit299/namaste-dev#readme"
+}
