@@ -1,3 +1,137 @@
-h1{
-    font-size: 24px;
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 80px;
+}
+
+.logo-container {
+  display: flex;
+}
+
+.nav-links {
+  display: flex;
+  font-size: inherit;
+}
+
+.nav-links ul {
+  display: flex;
+  margin-right: 50px;
+}
+
+.nav-links ul li {
+  list-style: none;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.search-container {
+  margin: 20px 0px;
+}
+
+.card-container {
+  width: 296px;
+  padding: 20px 20px 57px;
+  border: 1px solid #fff;
+  contain: content;
+}
+
+.card-container:hover {
+  cursor: pointer;
+  border-color: #d3d5df;
+  box-shadow: 0 4px 7px 0 rgba(218, 220, 230, 0.6);
+}
+
+.card-container img {
+  width: 100%;
+}
+
+.res-content-container h3 {
+  font-size: 17px;
+  font-weight: 500;
+  word-break: break-word;
+  margin-bottom: 0;
+}
+
+.card-desc {
+  color: #686b78;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.body-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-container {
+  margin: 15px 0px;
+}
+
+.login-btn{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: inherit
+}
+
+.filter-container{
+  display: flex;
+  gap: 50px;
+}
+
+/* Shimmer UI Starts */
+.shimmer-container .shine {
+  background: #f6f7f8;
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 800px 104px;
+  display: inline-block;
+  position: relative;
+
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: placeholderShimmer;
+  -webkit-animation-timing-function: linear;
+}
+
+.shimmer-container {
+    border: 1px solid #f0f0f0;
+}
+
+.shimmer-container .photo {
+  display: block !important;
+  width: 296;
+  height: 186px;
+  margin-top: 15px;
+}
+
+.shimmer-container .lines {
+  height: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+@-webkit-keyframes placeholderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
 }
