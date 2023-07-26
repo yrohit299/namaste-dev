@@ -1,59 +1,69 @@
-import CardComponent from './CardComponent';
+import CardComponent, { withPromotedLabel } from './CardComponent';
 import { useState, useEffect } from 'react';
 import ShimmerCard from './ShimmerCard';
+import { RESTAURANTS_LIST } from '../utils/api'
 
 const BodyContainer = () => {
-  const shimmerDefaultLength = 15;
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filterRestaurantList, setFilterRestautantList] = useState([]);
   const [inputText, setInputText] = useState('');
 
   const handleTopResturants = () => {
-    let filter = listOfRestaurants.filter((item) => item.data.avgRating > 4);
+    let filter = filterRestaurantList.filter((item) => item.data.avgRating > 4);
     console.log(filter);
-    setListOfRestaurants(filter);
+    setFilterRestautantList(filter);
   };
 
   useEffect(() => {
     fetchData();
+    console.log('useEfferct called');
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.3150962&lng=72.859302&page_type=DESKTOP_WEB_LISTING'
-    );
+    const data = await fetch(RESTAURANTS_LIST);
     const json = await data.json();
-    setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilterRestautantList(json?.data?.cards[2]?.data?.data?.cards);
+    console.log(json.data.cards[5].card.card.gridElements?.infoWithStyle.restaurants);
+    setListOfRestaurants(json.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilterRestautantList(json.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
 
   const handleSearch = () => {
     const filter = listOfRestaurants.filter((res) => {
-     return res.data.name.toLowerCase().includes(inputText.toLowerCase());
+      return res.data.name.toLowerCase().includes(inputText.toLowerCase());
     });
 
     console.log(filter);
 
     setFilterRestautantList(filter);
-  }
+  };
 
   return (
     <>
-      <div className='filter-container'>
-        <div>
-          <input type='text' value={inputText} onChange={(e) => setInputText(e.target.value)}/>
-          <button type='button' onClick={() => handleSearch()}>Search</button>
+    {console.log('func return is called')}
+      <div className='flex p-4'>
+        <div className='flex'>
+          <input
+            type='text'
+            className='px-3 border border-solid rounded-md'
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            placeholder='search restaurant'
+          />
+          <button type='button' className='px-3 py-2 ml-2 mr-2 bg-red-100 border border-solid rounded-md' onClick={() => handleSearch()}>
+            Search
+          </button>
         </div>
-        <button onClick={() => handleTopResturants()}>
+        <button className='px-4 py-2 border rounded-md' onClick={() => handleTopResturants()}>
           Filter top restaurant
         </button>
       </div>
-      <div className='body-container'>
-        {filterRestaurantList.length
-          ? filterRestaurantList.map((item) => {
-              return <CardComponent key={item.data.id} data={item.data} />;
+      <div className='flex flex-wrap'>
+        {filterRestaurantList?.length
+          ? filterRestaurantList?.map((item) => {
+            const { id } = item.info
+              return <CardComponent key={id} data={item.info} />;
             })
-          : Array(shimmerDefaultLength).fill(<ShimmerCard />)}
+          : Array.from({ length: 15 }, (_, i) => <ShimmerCard key={i} />)}
       </div>
     </>
   );

@@ -1,23 +1,24 @@
 import { useState } from "react";
 import { CDN_LOGO } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btnName, setBtnName] = useState('Login');
     return (
-      <div className='header-container'>
+      <div className='flex justify-between items-center bg-red-600'>
         <div className='logo-container'>
           <img
-            className='logo'
+            className='w-12'
             src={CDN_LOGO}
             alt='brand-logo'
           />
         </div>
-        <div className='nav-links'>
-          <ul>
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Contact Us</li>
-            <li><button className="login-btn" onClick={() => btnName === 'Login' ? setBtnName('Logout') : setBtnName('Login')}>{btnName}</button></li>
+        <div className='flex'>
+          <ul className="flex p-3">
+            <li className="px-4"><Link to='/' className="hover:text-white">Home</Link></li>
+            <li className="px-4"><Link to='/about' className="hover:text-white">About</Link></li>
+            <li className="px-4"><Link to='/contact' className="hover:text-white">Contact Us</Link></li>
+            <li className="px-4 hover:text-white" ><button className="login-btn" onClick={() => btnName === 'Login' ? setBtnName('Logout') : setBtnName('Login')}>{btnName}</button></li>
           </ul>
         </div>
       </div>
