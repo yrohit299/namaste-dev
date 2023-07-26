@@ -9,7 +9,7 @@ const BodyContainer = () => {
   const [inputText, setInputText] = useState('');
 
   const handleTopResturants = () => {
-    let filter = filterRestaurantList.filter((item) => item.data.avgRating > 4);
+    let filter = filterRestaurantList.filter((item) => item.info.avgRating > 4);
     console.log(filter);
     setFilterRestautantList(filter);
   };

@@ -10,7 +10,7 @@ const CardComponent = (props) => {
       <div className='w-64 p-2 mb-2 ml-2 border rounded-md' style={{ height: 'calc(100% - 10px)' }}>
         {data.promoted && <label className='absolute p-2 -mt-2 -ml-2 text-sm text-white bg-black rounded-sm'>Promoted</label>}
         <div className='res-logo-container'>
-          <img src={CARD_LOGO_URL + data.cloudinaryImageId} />
+          <img src={CARD_LOGO_URL + data.cloudinaryImageId} className='rounded' />
         </div>
         <div className='res-content-container'>
           <h3 className='pt-2 text-sm font-medium'>{data?.name}</h3>
