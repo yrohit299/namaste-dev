@@ -29,7 +29,7 @@ const BodyContainer = () => {
 
   const handleSearch = () => {
     const filter = listOfRestaurants.filter((res) => {
-      return res.data.name.toLowerCase().includes(inputText.toLowerCase());
+      return res.info.name.toLowerCase().includes(inputText.toLowerCase());
     });
 
     console.log(filter);
