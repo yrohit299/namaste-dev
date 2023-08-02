@@ -7,15 +7,18 @@ import Error from './components/Error';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import MenuListing from './components/MenuListing';
+import { Provider } from 'react-redux';
+import appStore from './store/store';
+import Cart from './components/Cart';
 
 // JSX => Babel transpiles it to create.ReactElement => create.ReactElement-JS object => HTMLElement(render)
 
 const AppComponent = () => {
   return (
-    <>
+    <Provider store={appStore}>
       <Header />
       <Outlet />
-    </>
+    </Provider>
   );
 };
 
@@ -36,6 +39,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact />
+      },
+      {
+        path: '/cart',
+        element: <Cart />
       },
       {
         path: '/restaurants/:id',

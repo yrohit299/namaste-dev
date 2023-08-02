@@ -14,6 +14,13 @@ const MenuListing = () => {
   const menuLists =
     menuListing?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
   const name = menuListing?.data?.cards[0]?.card?.card?.info?.name;
+
+  const filteredMenuList = menuLists?.filter(
+    (item) =>
+      item.card.card['@type'] ===
+      'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
+  );
+  // console.log(filteredMenuList);
   // console.log(name);
   const handleHeaderClick = (index) => {
     setShowIndex(index);
@@ -21,19 +28,15 @@ const MenuListing = () => {
   return (
     <div className='w-8/12 py-8 m-auto'>
       <h1 className='text-2xl font-bold'>{name}</h1>
-      {menuLists?.map((category, index) => {
+      {filteredMenuList?.map((category, index) => {
         const { title } = category.card.card;
-        // console.log(category);
         return (
-          category.card.card['@type'] ===
-            'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory' && (
-            <RestaurantCategory
-              key={title}
-              data={category.card.card}
-              show={index === showIndex ? true : false}
-              handleHeaderClick={() => handleHeaderClick(index)}
-            />
-          )
+          <RestaurantCategory
+            key={title}
+            data={category.card.card}
+            show={index === showIndex ? true : false}
+            handleHeaderClick={() => handleHeaderClick(index)}
+          />
         );
       })}
     </div>
