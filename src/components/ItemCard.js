@@ -27,7 +27,7 @@ const ItemCard = (data) => {
             className='relative flex items-center justify-between border-b-2'
           >
             {location.pathname == '/cart' && (
-              <button className='absolute top-0 right-0 cursor-pointer' onClick={() => handleRemove(id)}>x</button>
+              <button className='absolute top-0 right-0 flex items-center justify-center w-5 h-5 text-white bg-black rounded-full shadow-md cursor-pointer shadow-gray-400' onClick={() => handleRemove(id)}>x</button>
             )}
             <div className='w-10/12 py-8'>
               <h4 className='text-sm font-semibold'>{name}</h4>
